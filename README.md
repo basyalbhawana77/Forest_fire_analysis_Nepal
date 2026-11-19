@@ -9,7 +9,7 @@ Where and When are the forest fires must concentrated across Nepal's districts &
 ## Data Source
 |Data|Description|Source|
 |raw_data/modis_2015_2025_Nepal.csv|forest fire data for nepal from 2015-2025|https://firms.modaps.eosdis.nasa.gov/country/
-|raw_data/Western and eastern nepal temp data.csv/https://power.larc.nasa.gov/data-access-viewer/
+|raw_data/Western and eastern nepal climate data.csv/https://power.larc.nasa.gov/data-access-viewer/
 |raw_data/geo_Boundaries_NPL-ADM2-all.shp|nepal administrative boundary shapefile|https://data.humdata.org/dataset/geoboundaries-admin-boundaries-for-nepal/resource/b7f062a7-4d8f-49fb-bbc2-4dd6fd30771d
 |raw_data/protected and conserved area.geojson|satellite data for PCAs|https://data.humdata.org/dataset/unep_wdpca_npl/resource/bcb0ba01-fcbe-4e76-a646-9288276a9e00
 ## repository structure
