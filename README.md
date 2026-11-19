@@ -36,7 +36,7 @@ All scripts are Google Colab notebooks written in R. Run them in number order:
 Google Drive.
 2. `scripts/1_data_clean.ipynb` reads both raw files, reshapes and joins them, and
 writes `clean_data/Forest_fire_analysis_Nepal.csv`.
-3. `scripts/2_analysis.ipynb` *(coming soon)* will compare the relation between climatic factors and fires
+3. `scripts/2_analysis.ipynb` *(coming soon)* will compare the relation between climatic factors and fires.
 Each notebook mounts Google Drive with one Python cell (`drive.mount()`), then
 switches to the R runtime. See the notes at the top of each notebook.
 ## Data Cleaning steps (1_data_clean>ipynb)
