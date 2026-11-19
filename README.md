@@ -1,10 +1,10 @@
 # Forest_fire_analysis_Nepal
 This is my capstone project for the Environmental Data Science certificate program.
 ## Project Description
-Forest fires pose a growing threat to Nepal's forest ecosystems, rural livelihoods, and carbon storage, particularly during the hot, dry pre-monsoon season. This capstone project analyzes the spatial distribution, climatic drivers, and economic cost of forest fires across all 77 districts of Nepal from 2015-2025. Using open access satellite and climate datasets, the study maps where and when fires occur most frequently, compares fire incidence inside versus outside protected areas, and estimates the financial value of carbon lost to burning.
+Forest fires pose a growing threat to Nepal's forest ecosystems, rural livelihoods, and carbon storage, particularly during the hot, dry pre-monsoon season. This capstone project analyzes the spatial distribution, climatic drivers, and economic cost of forest fires across all 77 districts of Nepal from 2015-2025. Using open access satellite and climate datasets, the study maps where and when fires occur most frequently, compares fire incidence inside versus outside protected areas.
 
 ## Research Question
-Where and When are the forest fires must concentrated across Nepal's districts & PAs, how do rainfall and temperature affect fire frequency, and what is the estimated carbon/economic loss?
+Where and When are the forest fires must concentrated across Nepal's districts & PAs, how do rainfall and temperature affect fire frequency?
 
 ## Data Source
 |Data|Description|Source|
