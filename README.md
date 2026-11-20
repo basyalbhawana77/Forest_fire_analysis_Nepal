@@ -40,3 +40,27 @@ writes `clean_data/Forest_fire_analysis_Nepal.csv`.
 Each notebook mounts Google Drive with one Python cell (`drive.mount()`), then
 switches to the R runtime. See the notes at the top of each notebook.
 ## Data Cleaning steps (1_data_clean>ipynb)
+1. Reading & Standardizing Raw Tables
+Combined all 11 years MODIS CSV files(2015-2025) into one table and standardized column names to lowercase. Read all 8 regional NASA POWER climate CSVs, skipping the 9-line begin header metadata block (skip = 9). so parameter, year,lat, lon,jan-dec, ANN aligns cleanly across all files.
+2. Filtering Active Vegetation Fires and Remove Duplicates
+I have filtered MODIS detections to type == 0 to keep only presumed vegetation/forest fires and exclude static non-forest thermal anomalies (such as brick kilns and industrial heat sources).
+Dropped low-confidence detections(confidence<30) and row with missing coordinates (!is.na(latitute), !is.na(longitude)). so that thermal noise do not inflate fire counts.
+Removed exact coordinate-timestamp duplicates using distinct(latitude, longitude, acq_data, acq_date, acq_time, .keep_all = TRUE)
+Parsed acq_date(YYYY-MM-DD) as a Date (as.Date()) and extracted numeric year and month columns (mutate()) for temporal aggregation.
+3. Reshaped wide climate Data to tidy long format(pivot_longer())
+Reshaped the monthly columns(jan-dec) into long format(year, month, parameter, value) using pivot_longer().
+Converted text abbreviations (jan-dec) to numeric months (1-12) using match (month_name, tolower(month.abb)) for calender sorting.
+Filtered out missing values (!is.na(value)) and NASA POWER's missing-data sentinel value (value != -999 ), and removed duplicate grid-cell entries (distinct()).
+4. Monthly Aggregation and Dataset join
+Aggregated cleaned MODIS fire detections (fire_counts, mean_frp) and regional climate records(mean_value by parameter) to the monthly level(year, month).
+Joined the monthly climate table and monthly fire summary with left_join(by = c("year", "month")) and checked join completeness with anti_join().
+Exported clean_data/nepal_modis_clean.csv and clean_data/nepal_fire_climate_clean.csv by write_csv().
+## Known Data Issues 7 Cleaning decisions
+Zero-fire Months: Because left-join() keeps all year-month climate rows, months with zero recorded forest fires(such as peak monsoon months) retain NA in fire count rather than being dropped.
+Spatial files reserved for analysis stage: District boundaries(geoBoundaries-NPL-ADM2-all) and Protected Area polygons(protected & conserved area.geojson) remain untouched in raw_data/ and will be spatially joined to nepal_modisclean.csv in scripts/2_analysis.ipyn.
+## Status and Next Steps
+Completed: project directory setup(0_project_setup.ipynb), raw data documentation, and data cleaning/merging pipeline(1_data_clean.ipynb)
+Next Steps: Build scripts/2_analysis.ipynb to spatially join nepal_modis_clean.csv with Nepal's 77 district and protected Area, estimate district-level carbon losses(CO2e) and economic costes, and generate maps and plots in figures/.
+
+
+
